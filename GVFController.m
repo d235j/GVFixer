@@ -28,20 +28,6 @@ void GVFSwizzleInstanceMethod (Class cls, SEL old, SEL new) {
 	}
 }
 
-void GVFSwizzleClassMethod (Class cls, SEL old, SEL new) {
-	Method mold = class_getClassMethod(cls, old);
-	Method mnew = class_getClassMethod(cls, new);
-	if (mold && mnew) {
-		Class metaCls = objc_getMetaClass(class_getName(cls));
-		if (class_addMethod(metaCls, old, method_getImplementation(mold), method_getTypeEncoding(mold))) {
-			mold = class_getClassMethod(cls, old);
-		}
-		if (class_addMethod(metaCls, new, method_getImplementation(mnew), method_getTypeEncoding(mnew))) {
-			mnew = class_getClassMethod(cls, new);
-		}
-		method_exchangeImplementations(mold, mnew);
-	}
-}
 
 @implementation NSObject (GVFixer)
 
@@ -55,7 +41,7 @@ void GVFSwizzleClassMethod (Class cls, SEL old, SEL new) {
 
     sdata = [sdata stringByReplacingOccurrencesOfString:@"'" withString:@"\"" options:nil range:NSMakeRange(start.location, end.location-start.location)];
     NSError *error = nil;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(,)(\\n\\s*\\})" options:nil error:&error];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(,)(\\s*\\})" options:nil error:&error];
 
     if (error)
     {
@@ -72,12 +58,6 @@ void GVFSwizzleClassMethod (Class cls, SEL old, SEL new) {
 
 @end
 
-
-int fixDataRegex(NSString *sdata)
-{
-    return 0;
-
-}
 
 
 @implementation GVFController

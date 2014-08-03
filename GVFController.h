@@ -17,6 +17,4 @@
 
 }
 
-int fixDataRegex(NSString *sdata);
-
 @end
