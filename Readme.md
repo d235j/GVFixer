@@ -17,3 +17,10 @@ This means Google could break it pretty easily. If this happens, please file a b
 
 
 The [ColorfulSidebar](http://cooviewerzoom.web.fc2.com/colorfulsidebar.html) SIMBL plugin was very useful as a template for this.
+
+Fix for 10.10.1
+--------------------
+1. Close GrowlVoice.
+2. Open EasySIMBL.
+3. Check "Use SIMBL".
+4. Open GrowlVoice.
