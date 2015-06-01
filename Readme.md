@@ -1,5 +1,8 @@
 # Fix GrowlVoice
 
+# NO LONGER WORKING DUE TO GOOGLE CHANGES
+
+
 Want to use GrowlVoice without the hassle of manually running a hack each time? Try this simple patch!
 
 This patch does work on OS X 10.10 Yosemite.
